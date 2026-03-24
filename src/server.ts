@@ -1,5 +1,6 @@
 import express, { type Request, type Response } from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import { connectDB } from './config/database';
 import userRoutes from './routes/userRoutes'; 
 import announcementRoutes from './routes/announcementRoutes';
@@ -10,6 +11,7 @@ connectDB();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(cors());
 app.use(express.json());
 
 app.use('/api/users', userRoutes); 
